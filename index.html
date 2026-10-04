@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Financeiro</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="container topbar-inner">
+          <div>
+            <p class="eyebrow">Projeto Finanças</p>
+            <h1>Agente Executivo de Finanças</h1>
+          </div>
+          <button id="toggleTheme" class="ghost-button" type="button">Modo escuro</button>
+        </div>
+      </header>
+
+      <main class="container dashboard">
+        <section class="hero card">
+          <div>
+            <p class="eyebrow">Painel executivo</p>
+            <h2>Atividade prática de escrituração</h2>
+            <p>
+              Este dashboard organiza as operações financeiras em um fluxo visual, mostrando
+              o comportamento de cada lançamento, a lógica contábil e o resultado final da análise.
+            </p>
+          </div>
+          <div class="hero-badges">
+            <span>Validação</span>
+            <span>Risco</span>
+            <span>Regra</span>
+            <span>Decisão</span>
+          </div>
+        </section>
+
+        <section class="kpis">
+          <div class="kpi-card card">
+            <span>Receita total</span>
+            <strong id="revenueTotal">R$ 0,00</strong>
+            <small>Entradas financeiras</small>
+          </div>
+          <div class="kpi-card card">
+            <span>Despesa total</span>
+            <strong id="expenseTotal">R$ 0,00</strong>
+            <small>Saídas financeiras</small>
+          </div>
+          <div class="kpi-card card success">
+            <span>Saldo líquido</span>
+            <strong id="netBalance">R$ 0,00</strong>
+            <small>Resultado final</small>
+          </div>
+          <div class="kpi-card card">
+            <span>Volume de operações</span>
+            <strong id="totalVolume">0</strong>
+            <small>Lançamentos analisados</small>
+          </div>
+        </section>
+
+        <section class="chart-grid">
+          <div class="card chart-panel">
+            <div class="panel-heading">
+              <h3>Fluxo financeiro</h3>
+              <span>Visão geral</span>
+            </div>
+            <div id="barChart" class="bar-chart" aria-label="Gráfico de fluxo financeiro"></div>
+          </div>
+
+          <div class="card calculator-panel">
+            <div class="panel-heading">
+              <h3>Simulador financeiro</h3>
+              <span>Teste rápido</span>
+            </div>
+
+            <label>
+              Valor
+              <input id="simulatorValue" type="number" value="1000" min="0" step="0.01" />
+            </label>
+
+            <label>
+              Tipo de operação
+              <select id="simulatorType">
+                <option value="receita">Receita</option>
+                <option value="despesa">Despesa</option>
+                <option value="ativo">Ativo</option>
+                <option value="passivo">Passivo</option>
+              </select>
+            </label>
+
+            <button id="calculateBtn" class="primary full" type="button">Calcular impacto</button>
+
+            <div id="simulatorResult" class="simulator-result">
+              Resultado: o valor será considerado como recepção de recursos para o patrimônio.
+            </div>
+          </div>
+        </section>
+
+        <section class="content-grid">
+          <aside class="card sidebar">
+            <div class="panel-heading compact">
+              <h3>Lançamentos</h3>
+              <span>16 itens</span>
+            </div>
+            <div id="transactionList" class="transaction-list"></div>
+          </aside>
+
+          <section class="card main-panel">
+            <div class="panel-heading compact">
+              <span id="transactionBadge" class="badge">Lançamento 26</span>
+              <h3 id="transactionTitle">Depósito em conta corrente</h3>
+            </div>
+
+            <div class="controls card-inner">
+              <div class="stepper-labels">
+                <span>Passo</span>
+                <strong id="stepTitle">1 / 5</strong>
+              </div>
+              <div class="progress-bar">
+                <div id="progressFill"></div>
+              </div>
+              <div class="step-buttons">
+                <button id="prevStep" type="button">Anterior</button>
+                <button id="nextStep" type="button" class="primary">Próximo passo</button>
+              </div>
+            </div>
+
+            <div id="answerPanel" class="answer-panel"></div>
+          </section>
+        </section>
+
+        <section class="card summary-box">
+          <h3>Resumo executivo</h3>
+          <ul id="summaryList" class="summary-list"></ul>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
